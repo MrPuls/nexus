@@ -2,35 +2,52 @@
 import { ref } from 'vue'
 import NavBar from "./components/navBar/NavBar.vue";
 
+/** @type {ref[list]} **/
 const testCasesList = ref([])
 
-const testCase = ref('')
+/** @type {ref[string]} **/
+const currentTestCase = ref('')
 
 function addTestCase() {
-  testCasesList.value.push(testCase.value)
-  testCase.value = ''
+  /* Add test case to the list */
+  testCasesList.value.push(currentTestCase.value)
+  currentTestCase.value = ''
 }
 </script>
 
 <template>
-  <NavBar></NavBar>
+  <NavBar />
   <div>
     <h1>Test Cases</h1>
     <div>
       <ul>
-        <li v-for="testCase in testCasesList" :key="testCase">{{ testCase }}</li>
+        <li
+          v-for="testCase in testCasesList"
+          :key="testCase"
+        >
+          {{ testCase }}
+        </li>
       </ul>
     </div>
     <div>
       <label class="input input-bordered w-full max-w-xs">
         Input Test Case Name:
-        <input  type="text" class="grow" placeholder="Test Case name" v-model="testCase"/>
+        <input
+          v-model="currentTestCase"
+          type="text"
+          class="grow"
+          placeholder="Test Case name"
+        >
       </label>
     </div>
     <div>
-      <button class="btn btn-primary" @click="addTestCase">Add Test Case</button>
+      <button
+        class="btn btn-primary"
+        @click="addTestCase"
+      >
+        Add Test Case
+      </button>
     </div>
-
   </div>
 </template>
 
