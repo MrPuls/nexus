@@ -1,18 +1,28 @@
 <script setup>
 
+
 </script>
 
 <template>
   <div class="flex justify-center">
-    <button class="btn btn-ghost">
+    <RouterLink
+      to="/"
+      class="btn btn-ghost"
+    >
       Home
-    </button>
-    <button class="btn btn-ghost">
+    </RouterLink>
+    <RouterLink
+      to="/about"
+      class="btn btn-ghost"
+    >
       About
-    </button>
-    <button class="btn btn-ghost">
+    </RouterLink>
+    <RouterLink
+      to="/contact"
+      class="btn btn-ghost"
+    >
       Contact
-    </button>
+    </RouterLink>
   </div>
 </template>
 
