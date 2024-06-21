@@ -18,6 +18,12 @@
       About
     </RouterLink>
     <RouterLink
+      to="/projects"
+      class="btn btn-ghost"
+    >
+      Projects
+    </RouterLink>
+    <RouterLink
       to="/contact"
       class="btn btn-ghost"
     >
