@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,vue}\"",
-    "lint-fix": "eslint \"src/**/*.{js,vue}\" --fix"
+    "lint-fix": "eslint \"src/**/*.{js,vue}\" --fix",
+    "test": "vitest --dir ./tests/unit/",
+    "coverage": "vitest run --coverage --dir ./tests/unit/"
   },
   "dependencies": {
     "tailwindcss": "^3.4.4",
@@ -16,7 +18,10 @@
     "vue-router": "4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.8",
     "@vitejs/plugin-vue": "^5.0.4",
+    "@vitest/coverage-v8": "^1.6.0",
     "autoprefixer": "^10.4.19",
     "daisyui": "^4.12.2",
     "eslint": "^9.5.0",
@@ -24,5 +29,8 @@
     "postcss": "^8.4.38",
     "vite": "^5.2.0",
     "vitest": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

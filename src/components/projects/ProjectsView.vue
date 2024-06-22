@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import CreateProjectModal from "./CreateProjectModal.vue";
 /** @type {ref[list]} **/
 const testCasesList = ref([])
 
@@ -11,10 +12,16 @@ function addTestCase() {
   testCasesList.value.push(currentTestCase.value)
   currentTestCase.value = ''
 }
+
+function createProject() {
+  /* Create project */
+  console.log('Project created')
+}
 </script>
 
 <template>
   <div>
+    <CreateProjectModal />
     <h1>Test Cases</h1>
     <div>
       <ul>
