@@ -3,32 +3,45 @@ import { ref } from 'vue';
 
 const name = ref('');
 const description = ref('');
+const projectArray = ref([]);
+const projID = ref(0)
 
+function addProject(project) {
+  projectArray.value.push(project);
+}
+
+const emit = defineEmits(['formSubmit'])
+
+// TODO: Add ID for it to be routed later
 function submitForm () {
-  console.log('Form submitted:', { name: name.value, email: description.value });
+  const filledForm = { name: name.value, description: description.value, id: projID.value}
+  console.log('Form submitted:', filledForm);
   // Add your form submission logic here
   // Reset form fields
-  name.value = '';
-  description.value = '';
+  addProject(filledForm)
+  emit('formSubmit', filledForm)
+}
+
+function incrementID() {
+  projID.value ++
 }
 
 function clearForm() {
   // Reset form fields
   name.value = '';
   description.value = '';
+  incrementID()
 }
 
 </script>
 
 <template>
-  <div>
-    <!-- Button to open the modal -->
+  <div class="flex pr-20">
     <label
       for="my-modal"
       class="btn btn-primary"
+      @click="clearForm"
     >Create project</label>
-
-    <!-- Modal -->
     <input
       id="my-modal"
       type="checkbox"

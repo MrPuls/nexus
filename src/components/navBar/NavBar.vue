@@ -1,6 +1,6 @@
 <script setup>
 import HamburgerMenu from "../hamburgerMenu/HamburgerMenu.vue";
-import ThemeController from "../themeControllerDarkMode/ThemeController.vue";
+import ThemeController from "../themeController/ThemeController.vue";
 import NavBarMenu from "./navBarMenu/NavbarMenu.vue";
 </script>
 
