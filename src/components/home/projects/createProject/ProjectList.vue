@@ -9,12 +9,11 @@ defineEmits([
 const projects = ref([]);
 
 
-// TODO: Ar some point this should be
+// TODO: At some point this should be a connection to DB
 function renderProjects(projectArray) {
   console.log("Emit Received, projects pulled from backend", projectArray)
   projects.value.push(projectArray)
 }
-
 
 </script>
 
@@ -23,7 +22,7 @@ function renderProjects(projectArray) {
     <div>
       <h1
         v-if="projects.length === 0"
-        class="text-2xl font-sans"
+        class="text-xl font-sans"
       >
         Seems like you have no projects yet.
       </h1>

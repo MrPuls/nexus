@@ -1,11 +1,9 @@
 <script setup>
-import ThemeController from "./components/themeController/ThemeController.vue";
+import NavBar from "./components/navBar/NavBar.vue";
 </script>
 
 <template>
-  <div class="flex justify-end pr-5 pt-2.5 pb-2">
-    <ThemeController />
-  </div>
+  <NavBar />
   <router-view />
 </template>
 

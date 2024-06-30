@@ -1,22 +1,17 @@
 <script setup>
-import HamburgerMenu from "../hamburgerMenu/HamburgerMenu.vue";
 import ThemeController from "../themeController/ThemeController.vue";
-import NavBarMenu from "./navBarMenu/NavbarMenu.vue";
+import BurgerMenu from "./components/BurgerMenu.vue";
+import NavBarProfile from "./components/NavBarProfile.vue";
+import NavBarSearch from "./components/NavBarSearch.vue";
+import NavBarTitle from "./components/NavBarTitle.vue";
 </script>
 
 <template>
-  <div class="navbar bg-base-100">
-    <div class="flex-none">
-      <HamburgerMenu />
-    </div>
-    <div class="flex-auto">
-      <a class="btn btn-ghost no-animation text-xl">Test Nexus</a>
-    </div>
-    <div class="flex-auto">
-      <NavBarMenu />
-    </div>
-    <div class="flex-none">
-      <ThemeController />
-    </div>
+  <div class="navbar bg-base-100 flex-row">
+    <BurgerMenu />
+    <NavBarTitle />
+    <NavBarSearch />
+    <ThemeController />
+    <NavBarProfile />
   </div>
 </template>

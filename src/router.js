@@ -5,9 +5,8 @@ import Home from "./components/home/HomeView.vue";
 import ProjectHome from "./components/projects/projectsHome/projectHome.vue";
 
 const routes = [
-    { path: '/', component: Home },
+    { path: '/', component: ProjectsView },
     { path: '/about', component: AboutView },
-    {path: '/projects', component: ProjectsView},
     {path: '/projects/:id', component: ProjectHome, name:"ProjectDetails"}
 ]
 
