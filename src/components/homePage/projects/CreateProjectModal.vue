@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from 'vue';
-import apiService from '../../../../services/api/api.js'
+import apiService from '../../../services/api/api.js'
 
 const name = ref('');
 const description = ref('');
@@ -12,14 +12,10 @@ function addProject(project) {
 
 const emit = defineEmits(['formSubmit'])
 
-// TODO: Add ID for it to be routed later
 async function submitForm () {
   let filledForm = { name: name.value, description: description.value }
-  console.log('Form submitted:', filledForm);
   const response = await apiService.createProject(filledForm)
-  console.log(response)
-  filledForm["id"] = response.projectId;
-  console.log(filledForm)
+  filledForm["id"] = response.id;
   addProject(filledForm)
   emit('formSubmit', filledForm)
 }

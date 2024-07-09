@@ -18,7 +18,7 @@ export default {
     async getProjects() {
         const response = await fetch(`${BASE_URL}/projects`);
         if (!response.ok) {
-            throw new Error('Failed to fetch projects');
+            throw new Error('Failed to fetch project');
         }
         return response.json();
     },

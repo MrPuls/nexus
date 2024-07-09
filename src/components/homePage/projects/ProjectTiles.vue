@@ -1,18 +1,17 @@
 <script setup>
 import CreateProjectModal from "./CreateProjectModal.vue";
 import {ref} from "vue";
+import apiService from "../../../services/api/api.js"
 
-defineEmits([
-    'formSubmit'
-])
 /** @type ref[T] **/
-const projects = ref([]);
+const projects = await apiService.getProjects()
 
+/**@type Array[T] **/
+const refProjects = ref(projects)
 
-// TODO: At some point this should be a connection to DB
-function renderProjects(projectArray) {
-  console.log("Emit Received, projects pulled from backend", projectArray)
-  projects.value.push(projectArray)
+function addProject(projectArray) {
+  console.log("Emit Received, project pulled from backend", projectArray)
+  refProjects.value.push(projectArray)
 }
 
 </script>
@@ -21,7 +20,7 @@ function renderProjects(projectArray) {
   <div class="flex justify-between pl-10 pt-5">
     <div>
       <h1
-        v-if="projects.length === 0"
+        v-if="refProjects.length === 0"
         class="text-xl font-sans"
       >
         Seems like you have no projects yet.
@@ -31,7 +30,7 @@ function renderProjects(projectArray) {
         class="flex flex-row flex-wrap gap-4"
       >
         <div
-          v-for="project in projects"
+          v-for="project in refProjects"
           :key="project.id"
           class="flex "
         >
@@ -51,7 +50,7 @@ function renderProjects(projectArray) {
     </div>
     <div>
       <CreateProjectModal
-        @form-submit="renderProjects"
+        @form-submit="addProject"
       />
     </div>
   </div>

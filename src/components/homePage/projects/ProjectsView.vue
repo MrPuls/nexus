@@ -1,5 +1,5 @@
 <script setup>
-import ProjectList from "./createProject/ProjectList.vue";
+import ProjectList from "./ProjectTiles.vue";
 
 </script>
 
@@ -11,7 +11,12 @@ import ProjectList from "./createProject/ProjectList.vue";
       </h1>
     </div>
   </div>
-  <ProjectList />
+  <Suspense>
+    <ProjectList />
+    <template #fallback>
+      Loading ...
+    </template>
+  </Suspense>
 </template>
 
 <style scoped>
