@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from 'vue';
-import apiService from '../../../services/api/api.js'
+import apiService from '../../services/api/api.js'
 
 const name = ref('');
 const description = ref('');

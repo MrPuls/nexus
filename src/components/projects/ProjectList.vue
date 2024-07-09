@@ -1,0 +1,51 @@
+<script setup>
+import CreateProjectModal from "./ProjectModal.vue";
+import {ref} from "vue";
+import apiService from "../../services/api/api.js"
+import ProjectTile from "./ProjectCard.vue";
+
+/** @type ref[T] **/
+const projects = await apiService.getProjects()
+
+/**@type Array[T] **/
+const refProjects = ref(projects)
+
+function addProject(projectArray) {
+  console.log("Emit Received, project pulled from backend", projectArray)
+  refProjects.value.push(projectArray)
+}
+
+</script>
+
+<template>
+  <div class="flex pt-10 pl-10 flex-row justify-between">
+    <div class="flex">
+      <h1 class="text-5xl font-sans">
+        Projects
+      </h1>
+    </div>
+    <div>
+      <CreateProjectModal
+        @form-submit="addProject"
+      />
+    </div>
+  </div>
+  <div>
+    <h1
+      v-if="refProjects.length === 0"
+      class="text-xl font-sans"
+    >
+      Seems like you have no projects yet.
+    </h1>
+  </div>
+  <div class="flex flex-row flex-wrap gap-4">
+    <ProjectTile
+      v-for="project in refProjects"
+      :key="project.id"
+      :project="project"
+    />
+  </div>
+</template>
+
+<style scoped>
+</style>
