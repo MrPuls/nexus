@@ -1,16 +1,10 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="flex size-16">
     <label class="swap swap-rotate">
       <!-- this hidden checkbox controls the state -->
-      <input
-        type="checkbox"
-        class="theme-controller"
-        value="dark"
-      >
+      <input type="checkbox" class="theme-controller" value="dark" />
 
       <!-- sun icon -->
       <svg
@@ -37,6 +31,4 @@
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

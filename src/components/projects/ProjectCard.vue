@@ -2,9 +2,9 @@
 defineProps({
   project: {
     type: Object,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 </script>
 
 <template>
@@ -21,6 +21,4 @@ defineProps({
   </router-link>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

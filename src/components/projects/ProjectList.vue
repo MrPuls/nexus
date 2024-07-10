@@ -1,38 +1,30 @@
 <script setup lang="ts">
 import CreateProjectModal from "./ProjectModal.vue";
-import {ref} from "vue";
-import apiService from "../../services/api/api.js"
+import { ref } from "vue";
+import apiService from "../../services/api/api.js";
 import ProjectTile from "./ProjectCard.vue";
 import Project from "../../types/project.ts";
 
-const projects = await apiService.getProjects()
-const refProjects = ref(projects)
+const projects = await apiService.getProjects();
+const refProjects = ref(projects);
 
 function addProject(projectArray: Array<Partial<Project>>) {
-  console.log("Emit Received, project pulled from backend", projectArray)
-  refProjects.value.push(projectArray)
+  console.log("Emit Received, project pulled from backend", projectArray);
+  refProjects.value.push(projectArray);
 }
-
 </script>
 
 <template>
   <div class="flex pt-10 pl-10 flex-row justify-between">
     <div class="flex">
-      <h1 class="text-5xl font-sans">
-        Projects
-      </h1>
+      <h1 class="text-5xl font-sans">Projects</h1>
     </div>
     <div>
-      <CreateProjectModal
-        @form-submit="addProject"
-      />
+      <CreateProjectModal @form-submit="addProject" />
     </div>
   </div>
   <div>
-    <h1
-      v-if="refProjects.length === 0"
-      class="text-xl font-sans"
-    >
+    <h1 v-if="refProjects.length === 0" class="text-xl font-sans">
       Seems like you have no projects yet.
     </h1>
   </div>
@@ -45,5 +37,4 @@ function addProject(projectArray: Array<Partial<Project>>) {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -10,10 +10,8 @@
       type="text"
       placeholder="Search"
       class="input input-bordered w-24 md:w-auto"
-    >
+    />
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

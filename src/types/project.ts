@@ -1,7 +1,7 @@
-type Project = {
-    name: string;
-    description: string;
-    id: number | undefined
-}
+interface Project {
+  name: string;
+  description: string;
+  id: number | undefined;
+};
 
 export default Project;
