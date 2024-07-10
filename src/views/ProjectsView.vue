@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import ProjectsView from "../components/projects/ProjectList.vue";
 </script>

@@ -1,16 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import CreateProjectModal from "./ProjectModal.vue";
 import {ref} from "vue";
 import apiService from "../../services/api/api.js"
 import ProjectTile from "./ProjectCard.vue";
+import Project from "../../types/project.ts";
 
-/** @type ref[T] **/
 const projects = await apiService.getProjects()
-
-/**@type Array[T] **/
 const refProjects = ref(projects)
 
-function addProject(projectArray) {
+function addProject(projectArray: Array<Partial<Project>>) {
   console.log("Emit Received, project pulled from backend", projectArray)
   refProjects.value.push(projectArray)
 }

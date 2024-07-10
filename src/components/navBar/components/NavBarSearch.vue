@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 /* TODO: Make it prettier with possibility to keyboard prompt and opening in a separate modal window.
     Also Add something like algolia or elasticSearch(OpenSearch now since license foolery)
 */

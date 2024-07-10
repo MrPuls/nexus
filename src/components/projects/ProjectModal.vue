@@ -1,22 +1,20 @@
-<script setup>
-import {ref} from 'vue';
+<script setup lang="ts">
+import {ref, Ref} from 'vue';
 import apiService from '../../services/api/api.js'
+import Project from "../../types/project.ts"
 
 const name = ref('');
 const description = ref('');
-const projectArray = ref([]);
-
-function addProject(project) {
-  projectArray.value.push(project);
-}
+const projectArray: Ref<Array<Partial<Project>>> = ref([]);
 
 const emit = defineEmits(['formSubmit'])
+let filledForm: Partial<Project>
 
 async function submitForm () {
-  let filledForm = { name: name.value, description: description.value }
+  filledForm = { name: name.value, description: description.value }
   const response = await apiService.createProject(filledForm)
   filledForm["id"] = response.id;
-  addProject(filledForm)
+  projectArray.value.push(filledForm)
   emit('formSubmit', filledForm)
 }
 
