@@ -3,7 +3,7 @@ import CreateProjectModal from "./ProjectModal.vue";
 import { ref } from "vue";
 import apiService from "../../services/api/api.js";
 import ProjectTile from "./ProjectCard.vue";
-import Project from "../../types/project.ts";
+import type { Project } from '@/types/project'
 
 const projects = await apiService.getProjects();
 const refProjects = ref(projects);

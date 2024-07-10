@@ -1,7 +1,5 @@
-interface Project {
+export interface Project {
   name: string;
   description: string;
   id: number | undefined;
-};
-
-export default Project;
+}

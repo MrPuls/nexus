@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, Ref } from "vue";
+import { ref } from "vue";
+import type { Ref } from "vue"
 import apiService from "../../services/api/api.js";
-import Project from "../../types/project.ts";
+import type { Project } from '@/types/project'
 
 const name = ref("");
 const description = ref("");
