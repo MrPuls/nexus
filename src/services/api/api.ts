@@ -17,7 +17,12 @@ export default {
   },
 
   async getProjects() {
-    const response = await fetch(`${BASE_URL}/projects`);
+    const response = await fetch(`${BASE_URL}/projects`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!response.ok) {
       throw new Error("Failed to fetch projects");
     }

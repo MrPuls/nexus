@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import CreateProjectModal from "./ProjectModal.vue";
-import { ref } from "vue";
-import apiService from "../../services/api/api.js";
-import ProjectTile from "./ProjectCard.vue";
+import { ref } from 'vue'
+import ProjectCard from "./ProjectCard.vue";
 import type { Project } from '@/types/project'
+import { projectStore } from '@/stores/project'
 
-const projects = await apiService.getProjects();
-const refProjects = ref(projects);
+
+const store = projectStore();
+const refProjects = ref(store.allProjects);
 
 function addProject(projectArray: Array<Partial<Project>>) {
   console.log("Emit Received, project pulled from backend", projectArray);
@@ -29,7 +30,7 @@ function addProject(projectArray: Array<Partial<Project>>) {
     </h1>
   </div>
   <div class="flex flex-row flex-wrap gap-4">
-    <ProjectTile
+    <ProjectCard
       v-for="project in refProjects"
       :key="project.id"
       :project="project"

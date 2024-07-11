@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ProjectsView from "../components/projects/ProjectList.vue";
+import ProjectsList from "../components/projects/ProjectList.vue";
 </script>
 
 <template>
   <Suspense>
-    <ProjectsView />
+    <ProjectsList />
     <template #fallback> Loading ... </template>
   </Suspense>
 </template>

@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <router-link
-    :to="{ name: 'ProjectDetails', params: { id: project.id } }"
+    :to="{ name: 'ProjectDetailView', params: { id: project.id } }"
     class="card bg-base-100 w-96 shadow-xl hover:scale-105 hover:shadow-2xl ease-in-out transition duration-300 text-left cursor-pointer"
   >
     <div class="card-body">
