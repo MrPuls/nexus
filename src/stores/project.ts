@@ -4,6 +4,6 @@ import apiService from '@/services/api/api'
 const projects = await apiService.getProjects();
 
 export const projectStore = defineStore('project', () => {
-  const allProjects = projects;
+  const allProjects = projects["projects"];
   return {allProjects}
 })

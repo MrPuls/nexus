@@ -5,7 +5,7 @@ import ProjectHome from '@/components/projects/ProjectHome.vue'
 
 
 <template>
-  <div class="flex flex-row justify-between">
+  <div class="flex flex-row">
     <ProjectMenu />
     <Suspense>
       <ProjectHome />

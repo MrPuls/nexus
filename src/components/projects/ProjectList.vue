@@ -29,7 +29,7 @@ function addProject(projectArray: Array<Partial<Project>>) {
       Seems like you have no projects yet.
     </h1>
   </div>
-  <div class="flex flex-row flex-wrap gap-4">
+  <div class="flex flex-row flex-wrap gap-4 pt-10 pl-5 pr-5">
     <ProjectCard
       v-for="project in refProjects"
       :key="project.id"
