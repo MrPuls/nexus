@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CreateProjectModal from "./ProjectModal.vue";
+import ProjectModal from "./ProjectModal.vue";
 import { ref } from 'vue'
 import ProjectCard from "./ProjectCard.vue";
 import type { Project } from '@/types/project'
@@ -21,7 +21,7 @@ function addProject(projectArray: Array<Partial<Project>>) {
       <h1 class="text-5xl font-sans">Projects</h1>
     </div>
     <div>
-      <CreateProjectModal @form-submit="addProject" />
+      <ProjectModal @form-submit="addProject" />
     </div>
   </div>
   <div>
