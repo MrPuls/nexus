@@ -4,14 +4,22 @@ import { ref } from 'vue'
 import ProjectCard from "./ProjectCard.vue";
 import type { Project } from '@/types/project'
 import { projectStore } from '@/stores/project'
+import ProjectEditModal from '@/components/projects/ProjectEditModal.vue'
 
 
 const store = projectStore();
 const refProjects = ref(store.allProjects);
+const projectDetailsName = ref("");
+const projectDetailsDescription = ref("");
 
 function addProject(projectArray: Array<Partial<Project>>) {
   console.log("Emit Received, project pulled from backend", projectArray);
   refProjects.value.push(projectArray);
+}
+
+function editProject(name: string, description: string) {
+  projectDetailsName.value = name;
+  projectDetailsDescription.value = description;
 }
 </script>
 
@@ -23,6 +31,7 @@ function addProject(projectArray: Array<Partial<Project>>) {
     <div>
       <ProjectModal @form-submit="addProject" />
     </div>
+    <ProjectEditModal :name="projectDetailsName" :description="projectDetailsDescription" />
   </div>
   <div>
     <h1 v-if="refProjects.length === 0" class="text-xl font-sans">
@@ -31,6 +40,7 @@ function addProject(projectArray: Array<Partial<Project>>) {
   </div>
   <div class="flex flex-row flex-wrap gap-4 pt-10 pl-5 pr-5">
     <ProjectCard
+      @edit-project="editProject"
       v-for="project in refProjects"
       :key="project.id"
       :project="project"

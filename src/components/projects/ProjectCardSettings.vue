@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+defineProps({
+  projectName: String,
+  projectDescription: String,
+})
+
+defineEmits(["editClicked"]);
+
 const isOpen = ref(false)
 
 const toggleDropdown = () => {
@@ -19,7 +26,6 @@ const confirmDelete = () => {
   }
   isOpen.value = false // Close dropdown after action
 }
-
 </script>
 
 <template>
@@ -32,7 +38,7 @@ const confirmDelete = () => {
       </svg>
     </div>
     <ul v-if="isOpen" tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-24 p-2 shadow">
-      <li><a @click="edit" class="hover:bg-base-200">Edit</a></li>
+      <li><a @click="$emit('editClicked')" class="hover:bg-base-200">Edit</a></li>
       <li><a @click="confirmDelete" class="text-red-500 hover:bg-red-100">Delete</a></li>
     </ul>
   </div>

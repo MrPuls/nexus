@@ -28,10 +28,10 @@ function clearForm() {
 
 <template>
   <div class="flex pr-20">
-    <label for="my-modal" class="btn btn-primary" @click="clearForm"
+    <label for="create-project-modal" class="btn btn-primary" @click="clearForm"
       >Create project</label
     >
-    <input id="my-modal" type="checkbox" class="modal-toggle" />
+    <input id="create-project-modal" type="checkbox" class="modal-toggle" />
     <div class="modal">
       <div class="modal-box">
         <h3 class="font-bold text-lg">Enter Project Details</h3>
@@ -58,8 +58,8 @@ function clearForm() {
           />
         </div>
         <div class="modal-action">
-          <label for="my-modal" class="btn" @click="submitForm">Submit</label>
-          <label for="my-modal" class="btn" @click="clearForm">Close</label>
+          <label for="create-project-modal" class="btn" @click="submitForm">Submit</label>
+          <label for="create-project-modal" class="btn" @click="clearForm">Close</label>
         </div>
       </div>
     </div>
