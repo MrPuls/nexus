@@ -6,25 +6,12 @@ defineProps({
   projectDescription: String,
 })
 
-defineEmits(["editClicked"]);
+defineEmits(["editClicked", "deleteClicked"]);
 
 const isOpen = ref(false)
 
 const toggleDropdown = () => {
   isOpen.value = !isOpen.value
-}
-
-const edit = () => {
-  // Implement edit logic
-  isOpen.value = false // Close dropdown after action
-}
-
-const confirmDelete = () => {
-  if (confirm('Are you sure you want to delete ...?')) {
-    // Implement delete logic
-    console.log('Item deleted')
-  }
-  isOpen.value = false // Close dropdown after action
 }
 </script>
 
@@ -39,7 +26,7 @@ const confirmDelete = () => {
     </div>
     <ul v-if="isOpen" tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-24 p-2 shadow">
       <li><a @click="$emit('editClicked')" class="hover:bg-base-200">Edit</a></li>
-      <li><a @click="confirmDelete" class="text-red-500 hover:bg-red-100">Delete</a></li>
+      <li><a @click="$emit('deleteClicked')" class="text-red-500 hover:bg-red-100">Delete</a></li>
     </ul>
   </div>
 </template>

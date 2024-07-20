@@ -6,7 +6,6 @@ import type { Project } from '@/types/project'
 import { projectStore } from '@/stores/project'
 import ProjectEditModal from '@/components/projects/ProjectEditModal.vue'
 
-
 const store = projectStore();
 const refProjects = ref(store.allProjects);
 const projectDetailsName = ref("");
@@ -27,6 +26,15 @@ function openEditProjectModal(name: string, description: string) {
 function closeEditProjectModal() {
   showEditModal.value = false
 }
+
+function updateProject(newName: string, newDescription: string) {
+  let requestPayload: Partial<{name: string, description: string}> = {name: newName};
+  if (newDescription !== "") {
+    requestPayload["description"] = newDescription;
+  }
+  showEditModal.value = false
+  console.log(requestPayload);
+}
 </script>
 
 <template>
@@ -37,7 +45,7 @@ function closeEditProjectModal() {
     <div>
       <ProjectModal @form-submit="addProject" />
     </div>
-    <ProjectEditModal @close-edit-modal="closeEditProjectModal" v-if="showEditModal" :proj-name="projectDetailsName" :proj-description="projectDetailsDescription" />
+    <ProjectEditModal @edit-project="updateProject" @close-edit-modal="closeEditProjectModal" v-if="showEditModal" :proj-name="projectDetailsName" :proj-description="projectDetailsDescription" />
   </div>
   <div>
     <h1 v-if="refProjects.length === 0" class="text-xl font-sans">
