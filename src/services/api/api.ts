@@ -1,13 +1,14 @@
 import type { Project } from '@/types/project'
 const BASE_URL = "http://localhost:8080/api/v1";
+const HEADERS = {
+  "Content-Type": "application/json",
+}
 
 export default {
   async createProject(projectData: Partial<Project>) {
     const response = await fetch(`${BASE_URL}/projects`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: HEADERS,
       body: JSON.stringify(projectData),
     });
     if (!response.ok) {
@@ -19,9 +20,7 @@ export default {
   async getProjects() {
     const response = await fetch(`${BASE_URL}/projects`,{
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: HEADERS,
     });
     if (!response.ok) {
       throw new Error("Failed to fetch projects");
@@ -30,7 +29,10 @@ export default {
   },
 
   async getProject(id: number) {
-    const response = await fetch(`${BASE_URL}/projects/${id}`);
+    const response = await fetch(`${BASE_URL}/projects/${id}`, {
+      method: "GET",
+      headers: HEADERS,
+    });
     if (!response.ok) {
       throw new Error("Failed to fetch project");
     }
@@ -40,9 +42,7 @@ export default {
   async updateProject(id: number, projectData: Project) {
     const response = await fetch(`${BASE_URL}/projects/${id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: HEADERS,
       body: JSON.stringify(projectData),
     });
     if (!response.ok) {
@@ -54,6 +54,7 @@ export default {
   async deleteProject(id: number) {
     const response = await fetch(`${BASE_URL}/projects/${id}`, {
       method: "DELETE",
+      headers: HEADERS,
     });
     if (!response.ok) {
       throw new Error("Failed to delete project");

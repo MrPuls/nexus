@@ -1,24 +1,33 @@
 <script setup lang="ts">
+import ProjectCardSettings from '@/components/projects/ProjectCardSettings.vue'
+
 defineProps({
   project: {
     type: Object,
     required: true,
   },
 });
+
+defineEmits(['editProject'])
 </script>
 
 <template>
-  <router-link
-    :to="{ name: 'ProjectDetailView', params: { id: project.id } }"
-    class="card bg-base-100 w-96 shadow-xl hover:scale-105 hover:shadow-2xl ease-in-out transition duration-300 text-left cursor-pointer"
-  >
-    <div class="card-body">
-      <h2 class="card-title">
-        {{ project.name }}
-      </h2>
-      <p>{{ project.description }}</p>
+  <div class="card bg-base-100 w-64 h-40 shadow-xl hover:scale-105 hover:shadow-2xl ease-in-out transition duration-300 text-left cursor-pointer">
+    <ProjectCardSettings @edit-clicked="$emit('editProject', project.name, project.description)" :project-name="project.name" :project-description="project.description" />
+    <div>
+      <router-link
+        :to="{ name: 'ProjectDetailView', params: { id: project.id } }"
+      >
+        <div class="card-body">
+          <h2 class="card-title">
+            {{ project.name }}
+          </h2>
+          <p>{{ project.description }}</p>
+        </div>
+      </router-link>
     </div>
-  </router-link>
+
+  </div>
 </template>
 
 <style scoped></style>

@@ -10,8 +10,8 @@ const projectInfo = await apiService.getProject(projectID)
 </script>
 
 <template>
-  <div>
-    project name {{ projectInfo }}
+  <div class="">
+    {{ projectInfo.name }}
   </div>
 </template>
 
