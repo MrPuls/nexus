@@ -8,12 +8,12 @@ defineProps({
   },
 });
 
-defineEmits(['editProject'])
+defineEmits(['editProject', 'deleteProject'])
 </script>
 
 <template>
   <div class="card bg-base-100 w-64 h-40 shadow-xl hover:scale-105 hover:shadow-2xl ease-in-out transition duration-300 text-left cursor-pointer">
-    <ProjectCardSettings @edit-clicked="$emit('editProject', project.name, project.description)" :project-name="project.name" :project-description="project.description" />
+    <ProjectCardSettings @delete-clicked="$emit('deleteProject', project.name, project.id)" @edit-clicked="$emit('editProject', project.name, project.description, project.id)" :project-name="project.name" :project-description="project.description" />
     <div>
       <router-link
         :to="{ name: 'ProjectDetailView', params: { id: project.id } }"
