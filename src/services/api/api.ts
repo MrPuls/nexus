@@ -51,7 +51,7 @@ export default {
     return response.json();
   },
 
-  async deleteProject(id: number) {
+  async deleteProject(id: number): Promise<any> {
     const response = await fetch(`${BASE_URL}/projects/${id}`, {
       method: "DELETE",
       headers: HEADERS,

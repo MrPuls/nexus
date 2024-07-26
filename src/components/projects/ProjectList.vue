@@ -20,28 +20,41 @@ function addProject(projectArray: Array<Partial<Project>>) {
   refProjects.value.push(projectArray);
 }
 
-function openEditProjectModal(name: string, description: string) {
+function openEditProjectModal(name: string, description: string, id: number) {
   showEditModal.value = true
   projectDetailsName.value = name;
   projectDetailsDescription.value = description;
+  projectDetailsID.value = id;
 }
 
 function closeEditProjectModal() {
   showEditModal.value = false
 }
-// TODO: Pull project's ID for edit command, ProjectCard already has required emits,
-//    plus add id to payload formation in del and edit, and add api call to delete
+
 function updateProject(newName: string, newDescription: string) {
-  let requestPayload: Partial<{name: string, description: string}> = {name: newName};
-  if (newDescription !== "") {
+  let requestPayload: Partial<{id: number, name: string, description: string}> = {}
+  if (newDescription !== projectDetailsDescription.value) {
     requestPayload["description"] = newDescription;
+  }
+  if (newName !== projectDetailsName.value) {
+    requestPayload["name"] = newName;
   }
   showEditModal.value = false
   console.log(requestPayload);
 }
 
+// TODO: add backend call, probably inside modal component
+//   and then fire an emit (similar to project creation)
 function deleteProject(name: string) {
+  for (let project in refProjects.value) {
+    if (refProjects.value[project]["id"] === projectDetailsID.value) {
+      console.log(project);
+      refProjects.value.splice(project, 1);
+      console.log(refProjects.value);
+    }
+  }
   console.log("deleting project: ", name, projectDetailsID.value);
+  showDeleteModal.value = false
 }
 
 function openDeleteProjectModal(name: string, id: number) {
@@ -66,7 +79,7 @@ function closeDeleteProjectModal() {
       <ProjectModal @form-submit="addProject" />
     </div>
     <ProjectEditModal @edit-project="updateProject" @close-edit-modal="closeEditProjectModal" v-if="showEditModal" :proj-name="projectDetailsName" :proj-description="projectDetailsDescription" />
-    <ProjectDeleteModal @delete-project="deleteProject" @close-delete-modal="closeDeleteProjectModal" v-if="showDeleteModal" :proj-name="projectDetailsName" />
+    <ProjectDeleteModal @delete-project="deleteProject" @close-delete-modal="closeDeleteProjectModal" v-if="showDeleteModal" :proj-name="projectDetailsName" :proj-id="projectDetailsID" />
   </div>
   <div>
     <h1 v-if="refProjects.length === 0" class="text-xl font-sans">
