@@ -32,6 +32,7 @@ function closeEditProjectModal() {
 }
 
 function updateProject(newName: string, newDescription: string) {
+  // TODO: Add backend handler
   let requestPayload: Partial<{id: number, name: string, description: string}> = {}
   if (newDescription !== projectDetailsDescription.value) {
     requestPayload["description"] = newDescription;
@@ -43,9 +44,8 @@ function updateProject(newName: string, newDescription: string) {
   console.log(requestPayload);
 }
 
-// TODO: add backend call, probably inside modal component
-//   and then fire an emit (similar to project creation)
-function deleteProject(name: string) {
+function deleteProject() {
+  // there is probably a better solution than a for loop, but now I'm just happy it works
   for (let project in refProjects.value) {
     if (refProjects.value[project]["id"] === projectDetailsID.value) {
       console.log(project);
@@ -53,7 +53,7 @@ function deleteProject(name: string) {
       console.log(refProjects.value);
     }
   }
-  console.log("deleting project: ", name, projectDetailsID.value);
+  console.log("deleting project: ", projectDetailsID.value);
   showDeleteModal.value = false
 }
 
@@ -79,7 +79,9 @@ function closeDeleteProjectModal() {
       <ProjectModal @form-submit="addProject" />
     </div>
     <ProjectEditModal @edit-project="updateProject" @close-edit-modal="closeEditProjectModal" v-if="showEditModal" :proj-name="projectDetailsName" :proj-description="projectDetailsDescription" />
-    <ProjectDeleteModal @delete-project="deleteProject" @close-delete-modal="closeDeleteProjectModal" v-if="showDeleteModal" :proj-name="projectDetailsName" :proj-id="projectDetailsID" />
+    <Suspense>
+      <ProjectDeleteModal @delete-project="deleteProject" @close-delete-modal="closeDeleteProjectModal" v-if="showDeleteModal" :proj-name="projectDetailsName" :proj-id="projectDetailsID" />
+    </Suspense>
   </div>
   <div>
     <h1 v-if="refProjects.length === 0" class="text-xl font-sans">

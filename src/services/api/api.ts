@@ -51,7 +51,7 @@ export default {
     return response.json();
   },
 
-  async deleteProject(id: number): Promise<any> {
+  async deleteProject(id: number) {
     const response = await fetch(`${BASE_URL}/projects/${id}`, {
       method: "DELETE",
       headers: HEADERS,
@@ -59,6 +59,5 @@ export default {
     if (!response.ok) {
       throw new Error("Failed to delete project");
     }
-    return response.json();
   },
 };

@@ -23,8 +23,7 @@ async function callDeleteProject() {
   if (props.projId === 0) {
     throw new Error('Invalid project id')
   }
-  //TODO: WIP here
-  const response = await apiService.deleteProject(props.projId)
+  await apiService.deleteProject(props.projId)
   emits('deleteProject')
 }
 
@@ -53,8 +52,8 @@ async function callDeleteProject() {
         />
       </div>
       <div class="modal-action">
-        <label v-if="showDeleteButton" for="delete-project-modal" class="btn btn-disabled" @click="$emit('deleteProject', deleteName)">Delete</label>
-        <label v-else for="delete-project-modal" class="btn text-red-500 hover:bg-red-100" @click="$emit('deleteProject', deleteName)">Delete</label>
+        <label v-if="showDeleteButton" for="delete-project-modal" class="btn btn-disabled" @click="callDeleteProject">Delete</label>
+        <label v-else for="delete-project-modal" class="btn text-red-500 hover:bg-red-100" @click="callDeleteProject">Delete</label>
         <label for="delete-project-modal" class="btn" @click="$emit('closeDeleteModal')" >Cancel</label>
       </div>
     </div>
