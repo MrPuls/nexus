@@ -32,11 +32,12 @@ async function callDeleteProject() {
 <template>
   <div class="modal modal-open">
     <div class="modal-box">
-      <h3 class="font-bold text-lg">Delete project</h3>
+      <h3 class="font-bold text-lg">Delete project?</h3>
       <div>
         <label class="label">
           <span class="label-text text-red-700">
-            Are you sure you want to delete this project?<br><br>All data within the project will be erased
+            Are you sure you want to delete this project?
+            This will permanently delete the project and all of it's assets.
           </span>
         </label>
       </div>
