@@ -73,7 +73,7 @@ function closeDeleteProjectModal() {
 <template>
   <div class="flex pt-10 pl-10 flex-row justify-between">
     <div class="flex">
-      <h1 class="text-5xl font-sans">Projects</h1>
+      <h1 class="text-5xl font-sans" data-testid="projects-header">Projects</h1>
     </div>
     <div>
       <ProjectModal @form-submit="addProject" />
@@ -84,11 +84,11 @@ function closeDeleteProjectModal() {
     </Suspense>
   </div>
   <div>
-    <h1 v-if="refProjects.length === 0" class="text-xl font-sans">
+    <h1 v-if="refProjects.length === 0" class="text-xl font-sans" data-testid="project-list-empty-header">
       Seems like you have no projects yet.
     </h1>
   </div>
-  <div class="flex flex-row flex-wrap gap-4 pt-10 pl-5 pr-5">
+  <div class="flex flex-row flex-wrap gap-4 pt-10 pl-5 pr-5" data-testid="project-list">
     <ProjectCard
       @delete-project="openDeleteProjectModal"
       @edit-project="openEditProjectModal"
