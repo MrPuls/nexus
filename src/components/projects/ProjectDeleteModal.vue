@@ -37,7 +37,7 @@ async function callDeleteProject() {
         <label class="label">
           <span class="label-text text-red-700">
             Are you sure you want to delete this project?
-            This will permanently delete the project and all of it's assets.
+            This will permanently delete the project and all of its assets.
           </span>
         </label>
       </div>
