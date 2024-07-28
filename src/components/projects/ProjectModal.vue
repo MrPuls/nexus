@@ -14,6 +14,7 @@ let filledForm: Partial<Project>;
 async function submitForm() {
   filledForm = { name: name.value, description: description.value };
   const response = await apiService.createProject(filledForm);
+  console.log(response);
   filledForm["id"] = response.id;
   projectArray.value.push(filledForm);
   emit("formSubmit", filledForm);

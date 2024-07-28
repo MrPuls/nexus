@@ -59,6 +59,5 @@ export default {
     if (!response.ok) {
       throw new Error("Failed to delete project");
     }
-    return response.json();
   },
 };
