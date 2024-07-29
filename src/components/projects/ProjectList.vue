@@ -88,14 +88,17 @@ function closeDeleteProjectModal() {
       Seems like you have no projects yet.
     </h1>
   </div>
-  <div class="flex flex-row flex-wrap gap-4 pt-10 pl-5 pr-5" data-testid="project-list">
-    <ProjectCard
-      @delete-project="openDeleteProjectModal"
-      @edit-project="openEditProjectModal"
-      v-for="project in refProjects"
-      :key="project.id"
-      :project="project"
-    />
+  <div data-testid="project-list-container">
+    <ol class="flex flex-row flex-wrap gap-4 pt-10 pl-5 pr-5" data-testid="project-list">
+      <li v-for="project in refProjects"
+          :key="project.id">
+        <ProjectCard
+          @delete-project="openDeleteProjectModal"
+          @edit-project="openEditProjectModal"
+          :project="project"
+        />
+      </li>
+    </ol>
   </div>
 </template>
 

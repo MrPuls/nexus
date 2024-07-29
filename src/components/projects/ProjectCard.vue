@@ -26,7 +26,6 @@ defineEmits(['editProject', 'deleteProject'])
         </div>
       </router-link>
     </div>
-
   </div>
 </template>
 
