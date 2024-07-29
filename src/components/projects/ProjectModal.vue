@@ -26,26 +26,27 @@ function clearForm() {
   description.value = "";
 }
 
-const showEditButton = computed(() => {
+const showSubmitButton = computed(() => {
   return name.value.length < 3
 })
 </script>
 
 <template>
-  <div class="flex pr-20">
-    <label for="create-project-modal" class="btn btn-primary" @click="clearForm"
+  <div class="flex pr-20" data-testid="create-project-modal">
+    <label for="create-project-modal" class="btn btn-primary" data-testid="create-project-button" @click="clearForm"
       >Create project</label
     >
     <input id="create-project-modal" type="checkbox" class="modal-toggle" />
     <div class="modal">
       <div class="modal-box">
-        <h3 class="font-bold text-lg">Enter Project Details</h3>
+        <h3 class="font-bold text-lg" data-testid="create-project-header">Enter Project Details</h3>
         <div class="form-control">
           <label class="label justify-start">
-            <span class="label-text">Name</span>
+            <span class="label-text" data-testid="create-project-name">Name</span>
             <span class="text-red-700 pl-0.5">*</span>
           </label>
           <input
+            data-testid="create-project-name-input"
             v-model="name"
             type="text"
             class="input input-bordered"
@@ -53,18 +54,19 @@ const showEditButton = computed(() => {
         </div>
         <div class="form-control">
           <label class="label">
-            <span class="label-text">Description</span>
+            <span class="label-text" data-testid="create-project-description">Description</span>
           </label>
           <textarea
+            data-testid="create-project-description-input"
             v-model="description"
             type="text"
             class="textarea textarea-bordered"
           />
         </div>
         <div class="modal-action">
-          <label v-if="showEditButton" for="create-project-modal" class="btn btn-disabled" @click="submitForm">Create project</label>
-          <label v-else for="create-project-modal" class="btn" @click="submitForm">Create project</label>
-          <label for="create-project-modal" class="btn" @click="clearForm">Close</label>
+          <label data-testid="create-project-submit-button" v-if="showSubmitButton" for="create-project-modal" class="btn btn-disabled" @click="submitForm">Create project</label>
+          <label data-testid="create-project-submit-button" v-else for="create-project-modal" class="btn" @click="submitForm">Create project</label>
+          <label data-testid="create-project-close-button" for="create-project-modal" class="btn" @click="clearForm">Close</label>
         </div>
       </div>
     </div>
